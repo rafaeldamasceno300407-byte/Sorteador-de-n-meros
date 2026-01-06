@@ -68,3 +68,32 @@ function reiniciar() {
 
     desabilitarBotaoReiniciar();
 }
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // evita comportamento padrão
+
+        const quantidade = document.getElementById("quantidade");
+        const de = document.getElementById("de");
+        const ate = document.getElementById("ate");
+
+        if (document.activeElement === quantidade) {
+            de.focus();
+        } 
+        else if (document.activeElement === de) {
+            ate.focus();
+        } 
+        else if (document.activeElement === ate) {
+            sortear();
+        }
+    }
+
+    if (event.code === "Space") {
+        const botaoReiniciar = document.getElementById("btn-reiniciar");
+
+        if (!botaoReiniciar.disabled) {
+            event.preventDefault();
+            reiniciar();
+        }
+    }
+});
+
